@@ -3,6 +3,13 @@
 
   // ToDo: Functionのprototypeにもifメソッド生やしたい
   // ToDo: iff(opts)バージョン;
+  /*
+   *  @param condition {anything} argument will convert to Boolean
+   *  @return {Boolean or anything} return callback return or condition
+   *  @opts {Object}
+   *  @opts.then {Function or anything} run if condition is truthy
+   *  @opts.else {Function or anything} run if condition is falsy
+   */
   function iff(condition, opts, elsef) {
     if(false) {
     } else if(opts == null) {
@@ -47,7 +54,11 @@
           if(typeof _else === 'function') {
             return _else();
           } else {
-            return _else;
+            if(_else === undefined) {
+              return elsef;
+            } else {
+              return _else;
+            }
           }
         }
       }
