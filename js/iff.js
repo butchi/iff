@@ -42,7 +42,7 @@
       } else if(typeof opts === 'object') {
         var _then = opts.then;
         var _else = opts.else;
-        // var _elseif = opts.elseif; // 配列にしたい
+        // var _elseif = opts.elseif; // 配列にしたい。そもそもiffの入れ子できるので不要？
 
         if(condition) {
           if(typeof _then === 'function') {
