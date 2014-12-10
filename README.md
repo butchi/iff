@@ -8,6 +8,8 @@ The demo is [here](http://butchi.github.io/iff/) http://butchi.github.io/iff/
 ## usage
 ```js
 iff(condition, options);
+
+iff(condition, function_if_true, function_if_false);
 ```
 
 ex)
