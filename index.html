@@ -2,9 +2,136 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>if function</title>
+  <title>if-function demo</title>
+
+  <style>
+.list-example {
+  padding-left: 0;
+  list-style-position: inside;
+  list-style-type: decimal-leading-zero;
+}
+
+.list-example li + li {
+  border-top: 1px solid #999;
+  padding-top: 10px;
+}
+
+.list-example code {
+  background-color: #ddd;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+  </style>
 </head>
 <body>
+  <h1>if-function demo</h1>
+  <!-- <p>look at console.</p> -->
+
+  <ol class="list-example" data-js-class="list-example">
+    <li>
+      <textarea data-js-class="code" cols="30" rows="3">iff(false);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="30" rows="3">iff(true);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="30" rows="3">iff(null);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="30" rows="3">iff((1+1)===2);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="30" rows="3">iff(true, 5);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="30" rows="10">iff(true,
+  function() {
+    return 5;
+  },
+  function() {
+    return 3;
+  }
+);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="50" rows="10">iff(false,
+  function() {
+    return 5;
+  },
+  function() {
+    return 3;
+  }
+);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="50" rows="12">iff(true, {
+  then: function() {
+    'do something 1';
+    return 5;
+  },
+  else: function() {
+    'do something 2'; return 3;
+  }
+});</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="50" rows="12">iff(false, {
+  then: function() {
+    'do something 1';
+    return 5;
+  },
+  else: function() {
+    'do something 2';
+    return 3;
+  }
+});</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="50" rows="8">iff(false, {
+  then: function() {
+    'do something 1';
+    return 5;
+  }
+},
+3);</textarea>
+    </li>
+    <li>
+      <textarea data-js-class="code" cols="50" rows="10">// add your code</textarea>
+    </li>
+  </ol>
+
   <script src="./js/iff.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+$(function() {
+  /* find data-js-class */
+  function findClass(className) {
+    return $('[data-js-class="' + className + '"]');
+  }
+
+  jQuery.fn.findClass = function(className) {
+    return this.find('[data-js-class="' + className + '"]');
+  }
+
+  findClass('list-example').find('li').each(function(i, elm) {
+    var $elm = $(elm);
+
+    var $buttonRun = $('<button data-js-class="button-run">run</button>');
+    var $result = $('<pre>result: <code data-js-class="result"></code></pre>');
+
+    $elm.append($buttonRun);
+    $elm.append($result);
+
+    $elm.findClass('button-run').on('click', runHandler);
+
+    runHandler();
+
+    function runHandler() {
+      var code = $elm.findClass('code').val();
+      $elm.findClass('result').text(eval(code));
+    }
+  });
+});
+  </script>
 </body>
 </html>
