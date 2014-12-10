@@ -13,13 +13,13 @@ iff(condition, options);
 ex)
 
 ```js
-iff(true, {
+iff(1 + 1 === 2, {
   then: function() {
-    'do something 1';
+    alert('true!');
     return 5;
   },
   else: function() {
-    'do something 2';
+    alert('false!');
     return 3;
   }
 });
