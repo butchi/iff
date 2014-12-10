@@ -144,7 +144,11 @@ $(function() {
 
     function runHandler() {
       var code = $elm.findClass('code').val();
-      $elm.findClass('result').text(eval(code));
+      var codeTxt = eval(code);
+      if(codeTxt === undefined) {
+        codeTxt = 'undefined';
+      }
+      $elm.findClass('result').text(codeTxt);
     }
   });
 });
