@@ -96,6 +96,22 @@
 3);</textarea>
     </li>
     <li>
+      <textarea data-js-class="code" cols="50" rows="16">iff(false, {
+  then: function() {
+    'do something 1';
+    return 5;
+  },
+  else: iff(false,
+    8,
+    iff(false, {
+      then: 1,
+      else: 2
+    })
+  )
+},
+3);</textarea>
+    </li>
+    <li>
       <textarea data-js-class="code" cols="50" rows="10">// add your code</textarea>
     </li>
   </ol>
