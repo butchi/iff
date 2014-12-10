@@ -9,7 +9,7 @@ The demo is [here](http://butchi.github.io/iff/) http://butchi.github.io/iff/
 ```js
 iff(condition, options);
 
-iff(condition, function_if_true, function_if_false);
+iff(condition, callback_if_true, callback_if_false);
 ```
 
 ex)
